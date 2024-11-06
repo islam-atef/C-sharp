@@ -1,0 +1,14 @@
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\bin\Debug\net8.0\Huawi_Comissioning_App.exe
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\bin\Debug\net8.0\Huawi_Comissioning_App.deps.json
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\bin\Debug\net8.0\Huawi_Comissioning_App.runtimeconfig.json
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\bin\Debug\net8.0\Huawi_Comissioning_App.dll
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\bin\Debug\net8.0\Huawi_Comissioning_App.pdb
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\Huawi_Comissioning_App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\Huawi_Comissioning_App.AssemblyInfoInputs.cache
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\Huawi_Comissioning_App.AssemblyInfo.cs
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\Huawi_Comissioning_App.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\Huawi_Comissioning_App.dll
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\refint\Huawi_Comissioning_App.dll
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\Huawi_Comissioning_App.pdb
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\Huawi_Comissioning_App.genruntimeconfig.cache
+C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawi_Comissioning_App\obj\Debug\net8.0\ref\Huawi_Comissioning_App.dll
