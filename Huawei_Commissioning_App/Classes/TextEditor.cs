@@ -169,16 +169,19 @@ public class TextEditor : StatusCs
                                     switch (processCounter)
                                     {
                                         case 0:
-                                            line = line.Replace("(11-2-2-2)(SH1)", $"({CabCode_1})(SH1)");
+                                            line = line.Replace("(00-00-00-00)", $"({CabCode_1})");
                                             break;
                                         case 1:
-                                            line = line.Replace("(11-2-2-2)(SH2)", $"({CabCode_1})(SH2)");
+                                            line = line.Replace("(00-00-00-00)(SH2)", $"({CabCode_1})(SH2)");
                                             break;
                                         case 2:
-                                            line = line.Replace("(11-2-2-2)(SH2)", $"({CabCode_2})(SH1)");
+                                            line = line.Replace("(00-00-00-00)(SH2)", $"({CabCode_2})(SH1)");
                                             break;
                                         case 3:
-                                            line = line.Replace("(11-2-2-2)(SH2)", $"({CabCode_2})(SH2)");
+                                            line = line.Replace("(00-00-00-00)(SH2)", $"({CabCode_2})(SH2)");
+                                            break;
+                                        default:
+
                                             break;
                                     }
                                 }

@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Huawei_Commissioning_App
-build_property.ProjectDir = C:\Users\Dell\Documents\VsCode_Workspaces\C#_Workspace\Huawei_Commissioning_App\
+build_property.ProjectDir = C:\Users\pc\OneDrive\Documents\GitHub\C-sharp\Huawei_Commissioning_App\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
