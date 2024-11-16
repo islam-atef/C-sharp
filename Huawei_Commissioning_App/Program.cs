@@ -5,7 +5,6 @@ using NPOI.XSSF.UserModel; // For .xlsx files
 using NPOI.HSSF.UserModel; // For .xls files
 
 
-
 Excel excel_setup = new Excel();
 TextEditor mission = new TextEditor();
 Queue<Queue_Node> info = new Queue<Queue_Node>();
@@ -23,16 +22,10 @@ if (Sheet_status)
             Console.WriteLine($"{queue_Node.Cabinet_Family_Name} | {queue_Node.Cabinet_Type} | {queue_Node.Code_1} | {queue_Node.Code_2}");
             mission = new TextEditor(queue_Node.Cabinet_Family_Name, queue_Node.Cabinet_Type, queue_Node.Code_1, queue_Node.Code_2);
             mission.CreateCommission();
-
             Console.WriteLine(".............................................................................................................");
         }
     }
 }
-
-
-
-
-
 public class Queue_Node
 {
     public string? Cabinet_Status { get; set; }
