@@ -4,7 +4,6 @@ using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel; // For .xlsx files
 using NPOI.HSSF.UserModel; // For .xls files
 
-
 Excel excel_setup = new Excel();
 TextEditor mission = new TextEditor();
 Queue<Queue_Node> info = new Queue<Queue_Node>();

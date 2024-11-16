@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Huawei_Commissioning_App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+142370f8a118186b7d5cfaf25a48682c692a0b91")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+825bc92a55573ada5812643c9baf5445a9439006")]
 [assembly: System.Reflection.AssemblyProductAttribute("Huawei_Commissioning_App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Huawei_Commissioning_App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
