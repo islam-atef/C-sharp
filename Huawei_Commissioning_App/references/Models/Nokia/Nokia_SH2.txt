@@ -1,0 +1,188 @@
+OUTPUT
+###### System Name  (ID)
+configure system security operator isadmin no prompt
+configure system id 00-00-00-00
+configure system security profile admin prompt "00-00-00-00_SHELF2:%n:%d# "
+configure system security welcome-banner "######## Welcome to  00-00-00-00  Unauthorized Access Prohibited !! ########"
+exit all
+
+##### TE Mgnt IP
+configure service ies 1 interface TE_Mgnt address 2.2.2.2/29
+configure router static-route 0.0.0.0/0 next-hop 2.2.2.1
+exit all
+##### TEData Mgnt IP
+configure service ies 1 interface TeDATA_Mgnt address 1.1.1.1/29
+exit all
+##### TE voice routes for SHELF1
+configure service vprn 9430 interface TE-Voice address 3.3.3.3/29
+configure service vprn 9430 static-route 0.0.0.0/0 next-hop 3.3.3.2
+exit all
+### static-routes of TE #####      SHELF1 FANT-F
+configure router static-route  10.241.251.146/32 next-hop 2.2.2.1
+configure router static-route  10.241.251.150/32 next-hop 2.2.2.1
+configure router static-route  10.245.0.0/16 next-hop 2.2.2.1
+configure router static-route  10.245.1.15/32 next-hop 2.2.2.1
+configure router static-route  172.22.12.105/32 next-hop 2.2.2.1
+configure router static-route  172.22.12.106/32 next-hop 2.2.2.1
+exit all
+##### Static-routes of Tedata          SHELF1 FANT-F
+configure router static-route 196.219.224.1/32 next-hop 1.1.1.0
+configure router static-route 212.103.165.0/24 next-hop 1.1.1.0
+configure router static-route 213.158.162.0/24 next-hop 1.1.1.0
+configure router static-route 213.158.187.244/32 next-hop 1.1.1.0
+configure router static-route 213.158.183.0/24 next-hop 1.1.1.0
+configure router static-route 213.158.188.232/29 next-hop 1.1.1.0
+configure router static-route 10.42.56.56/29 next-hop 1.1.1.0
+configure router static-route 10.98.36.6/32 next-hop 1.1.1.0
+configure router static-route 10.98.36.10/32 next-hop 1.1.1.0
+configure router static-route 10.98.36.13/32 next-hop 1.1.1.0
+exit all
+##### Huawei voice_config
+configure voice sip system session-timer admin-status down
+configure voice sip vsp vsp1 admin-status down
+configure voice sip server simulator admin-status down
+configure voice sip server simulator2 admin-status down
+configure voice sip user-agent CENTRALIZED admin-status down
+configure voice sip user-agent-ap CENTRALIZED slot-id nt admin-status down
+configure voice sip dnsserver dnsserver1 admin-status down
+configure voice sip dnsserver dnsserver2 admin-status down
+configure voice sip no dnsserver dnsserver1
+configure voice sip no dnsserver dnsserver2
+configure voice sip no server simulator
+configure voice sip no server simulator2 
+configure voice sip system session-timer status enable se-time 1800 
+configure voice sip user-agent CENTRALIZED signal-vlan-id 943 ip-addr-policy centralized ip-config-mode manual  signal-gateway-ip 3.3.3.2 rtp-gateway-ip 3.3.3.2 rtp-vlan-id 943
+configure voice sip user-agent-ap CENTRALIZED slot-id nt signal-ip 3.3.3.3/29 rtp-ip 3.3.3.3/29
+
+configure voice sip server simulator address ipv4:0 admin-domain-name vsp1 site primary
+
+exit all
+
+configure voice sip vsp vsp1 domain-name ims.te.eg dial-long-timer 5 timer-b 32000 timer-f 32000 timer-t1 500 timer-t2 4000 sspprofile SSP_HuaweiIMScore
+
+exit all
+
+configure voice sip system session-timer admin-status up
+configure voice sip user-agent-ap CENTRALIZED slot-id nt admin-status up
+configure voice sip user-agent CENTRALIZED admin-status up
+configure voice sip server simulator admin-status up
+configure voice sip vsp vsp1 admin-status up
+configure voice sip vsp vsp1 admin-status up
+
+configure voice sip vsp vsp1 admin-status down
+configure voice sip redundancy vsp1 support-redun enable
+configure voice sip redundancy-cmd vsp1 fail-x-type geo-fail-back
+configure voice sip register vsp1 register-intv 7200 reg-head-start 3600
+configure voice sip transport udp provider-name vsp1 admin-status up
+
+sleep 5
+
+configure voice sip redundancy-cmd vsp1 fail-x-type geo-fail-over
+configure voice sip vsp vsp1 admin-status down
+configure voice sip redundancy vsp1 support-redun disable no dns-purge-timer no fg-monitor-method no bg-monitor-int no options-max-fwd
+configure voice sip vsp vsp1 admin-status up
+##### Ericsson voice_config
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+##### Ericsson voice_redundancy SIP Server
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
+##### Etisalat IMS FVNO
+configure voice sip vsp EtisalatEricssonIMScore admin-status down
+configure voice sip server EtisalatEricssonIMScore admin-status down
+configure voice sip user-agent EtisalatEricssonIMScore admin-status down
+configure voice sip user-agent-ap EtisalatEricssonIMScore slot-id nt admin-status down
+configure voice sip no server EtisalatEricssonIMScore
+
+configure voice sip server EtisalatEricssonIMScore address ipv4:10.241.79.32 admin-domain-name EtisalatEricssonIMScore server-role registrar-and-proxy transproto udp_tcp
+configure voice sip user-agent EtisalatEricssonIMScore signal-vlan-id 948 ip-addr-policy centralized ip-config-mode manual signal-gateway-ip 4.4.4.3 rtp-gateway-ip 4.4.4.3 rtp-vlan-id 948 provider-name EtisalatEricssonIMScore
+configure voice sip user-agent-ap EtisalatEricssonIMScore slot-id nt signal-ip 4.4.4.4/29 rtp-ip 4.4.4.4/29
+configure service vprn 9480 interface EtisalatEricssonIMScore create address 4.4.4.4/29
+configure service vprn 9480 static-route 0.0.0.0/0 next-hop 4.4.4.3
+
+exit all
+########################################################################################################################################################################################
+##### TeDATA profiles
+configure system security profile teadmin prompt "00-00-00-00_SHELF1:%n:%d# " slot-numbering type-based 
+exit all
+##### SNTP config
+configure system sntp server-ip-addr 10.235.1.138
+configure system sntp server-table ip-address 10.235.1.138
+configure system sntp server-table ip-address 10.235.1.162 priority 2
+exit all
+##### save config
+admin software-mngt ihub database save-protected
+admin save
+##### Check alarm profile applied & Ping the SBC IP address
+info configure equipment slot nt-a
+info configure equipment slot nt-b
+exit all
+
+# Huawei IMS ping test
+ping 0 router 9430
+ping 0 router 9430 size 1600
+
+# Ericsson IMS ping test
+ping 0 router 9430
+ping 0 router 9430 size 1600
+
+# Ericsson Socendry IMS ping test
+ping 0 router 9430
+ping 0 router 9430 size 1600
+
+# Etisalat IMS ping test
+ping 10.241.79.32 router 9480
+ping 10.241.79.32 router 9480 size 1600
+
+# TEDATA mgmt ping test
+ping 1.1.1.0

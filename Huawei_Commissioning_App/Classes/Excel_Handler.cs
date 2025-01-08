@@ -57,7 +57,17 @@ public class Excel
                                 continue;
                             else
                             {
-                                queue_Node.Code_1 = cell.ToString(); // cabinet code 1.
+                                queue_Node.Code_1 = cell.ToString();// cabinet code 1.
+                                if (queue_Node.Code_1 == null)
+                                {
+                                    Console.WriteLine("Code 2 is not existing.");
+                                    continue;
+                                }
+                                while (queue_Node.Code_1[0] == ' ')
+                                {
+                                    queue_Node.Code_1 = queue_Node.Code_1.Substring(1);
+                                }
+                                // test code.
                                 if (queue_Node.Cabinet_Type == "MA5818")
                                 {
                                     // Get the fourth cell, Cabinet Code 2.
@@ -67,6 +77,15 @@ public class Excel
                                     else
                                     {
                                         queue_Node.Code_2 = cell.ToString(); // cabinet code 2.
+                                        if (queue_Node.Code_2 == null)
+                                        {
+                                            Console.WriteLine("Code 2 is not existing.");
+                                            continue;
+                                        }
+                                        while (queue_Node.Code_2[0] == ' ')
+                                        {
+                                            queue_Node.Code_2 = queue_Node.Code_2.Substring(1);
+                                        }
                                     }
                                 }
                                 queue_Node.Cabinet_Status = "Accepted"; // status of the cabinet.

@@ -11,6 +11,7 @@ Queue_Node queue_Node = new Queue_Node();
 bool Sheet_status = Excel.Read_Cabinet_Sheet(info);
 if (Sheet_status)
 {
+    Console.Clear();
     Console.WriteLine($"Queue Size is {info.Count}");
     int counter = info.Count;
     for (int i = 0; i < counter; i++)
@@ -23,6 +24,8 @@ if (Sheet_status)
             mission.CreateCommission();
             Console.WriteLine(".............................................................................................................");
         }
+        else
+            Console.WriteLine($"{queue_Node.Code_1}&{queue_Node.Code_2} status is {queue_Node.Cabinet_Status}, the Cabinet is invalid.");
     }
 }
 public class Queue_Node
