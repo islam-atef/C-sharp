@@ -1,0 +1,130 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Huawei_Commissioning_App.Classes.ViewModels"
+             x:Class="Huawei_Commissioning_App.Classes.Views.GeneratorView"
+             x:DataType="vm:GeneratorViewModel">
+
+    <Grid ColumnDefinitions="380,*" Margin="10">
+        <!-- Left Side: Controls Form -->
+        <Border Grid.Column="0" 
+                Margin="0,0,20,0"
+                Background="White" 
+                BorderBrush="#E5E7EB" 
+                BorderThickness="1" 
+                CornerRadius="8" 
+                Padding="20">
+            <ScrollViewer>
+                <StackPanel Spacing="20">
+                    <TextBlock Text="Generator Configuration" 
+                               FontSize="18" 
+                               FontWeight="Bold" 
+                               Foreground="#111827"/>
+                    
+                    <!-- Cabinet Code -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Cabinet Code" FontWeight="SemiBold" Foreground="#374151" FontSize="13"/>
+                        <TextBox Text="{Binding CabinetCode, Mode=TwoWay}" 
+                                 Watermark="e.g., 11-2-12-14" 
+                                 Height="36" 
+                                 CornerRadius="4" 
+                                 IsEnabled="{Binding !IsGenerating}"/>
+                    </StackPanel>
+
+                    <!-- Cabinet Family -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Cabinet Family" FontWeight="SemiBold" Foreground="#374151" FontSize="13"/>
+                        <ComboBox ItemsSource="{Binding CabinetFamilies}" 
+                                  SelectedItem="{Binding SelectedCabinetFamily, Mode=TwoWay}"
+                                  HorizontalAlignment="Stretch" 
+                                  Height="36" 
+                                  CornerRadius="4"
+                                  IsEnabled="{Binding !IsGenerating}"/>
+                    </StackPanel>
+
+                    <!-- Cabinet Type -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Cabinet Model / Type" FontWeight="SemiBold" Foreground="#374151" FontSize="13"/>
+                        <ComboBox ItemsSource="{Binding CabinetTypes}" 
+                                  SelectedItem="{Binding SelectedCabinetType, Mode=TwoWay}"
+                                  HorizontalAlignment="Stretch" 
+                                  Height="36" 
+                                  CornerRadius="4"
+                                  IsEnabled="{Binding !IsGenerating}"/>
+                    </StackPanel>
+
+                    <!-- Output Folder Path -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Output Folder Path" FontWeight="SemiBold" Foreground="#374151" FontSize="13"/>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBox Grid.Column="0" 
+                                     Margin="0,0,8,0"
+                                     Text="{Binding FolderOutputPath, Mode=TwoWay}" 
+                                     Height="36" 
+                                     CornerRadius="4"
+                                     IsEnabled="{Binding !IsGenerating}"/>
+                            <Button Grid.Column="1" 
+                                    Content="Browse" 
+                                    Height="36" 
+                                    Click="BrowseFolderClick"
+                                    IsEnabled="{Binding !IsGenerating}"
+                                    CornerRadius="4" 
+                                    Background="#E5E7EB" 
+                                    Foreground="#374151"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
+
+                    <!-- Generate Button -->
+                    <Button Command="{Binding GenerateCommissionCommand}" 
+                            Content="Generate Commission" 
+                            HorizontalAlignment="Stretch" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center"
+                            Height="42" 
+                            CornerRadius="6" 
+                            Background="#2563EB" 
+                            Foreground="White" 
+                            FontWeight="Bold" 
+                            FontSize="14"
+                            IsEnabled="{Binding !IsGenerating}"/>
+
+                    <!-- Progress Indicator -->
+                    <ProgressBar IsIndeterminate="True" 
+                                 Height="4" 
+                                 IsVisible="{Binding IsGenerating}" 
+                                 Foreground="#2563EB" />
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Right Side: Terminal Logger -->
+        <Grid Grid.Column="1" RowDefinitions="Auto,*">
+            <TextBlock Grid.Row="0" 
+                       Text="Execution Output Log" 
+                       FontSize="15" 
+                       FontWeight="SemiBold" 
+                       Foreground="#374151" 
+                       Margin="0,0,0,8"/>
+            <Border Grid.Row="1" 
+                    Background="#0F172A" 
+                    BorderBrush="#1E293B" 
+                    BorderThickness="1" 
+                    CornerRadius="8" 
+                    Padding="10">
+                
+                <!-- Read-only TextBox styled as a Terminal Console -->
+                <TextBox Text="{Binding ConsoleOutput}" 
+                         FontFamily="Consolas, Courier New, monospace" 
+                         FontSize="12" 
+                         Foreground="#10B981" 
+                         Background="Transparent" 
+                         BorderThickness="0" 
+                         IsReadOnly="True" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True" 
+                         x:Name="TerminalLog"/>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

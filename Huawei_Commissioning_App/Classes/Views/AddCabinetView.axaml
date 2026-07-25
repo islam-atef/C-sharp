@@ -1,0 +1,191 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Huawei_Commissioning_App.Classes.ViewModels"
+             x:Class="Huawei_Commissioning_App.Classes.Views.AddCabinetView"
+             x:DataType="vm:AddCabinetViewModel">
+
+    <Grid RowDefinitions="Auto,*,Auto" Margin="10">
+        <!-- Top: Excel Import Panel -->
+        <Border Grid.Row="0" 
+                Margin="0,0,0,15"
+                Background="#EFF6FF" 
+                BorderBrush="#BFDBFE" 
+                BorderThickness="1" 
+                CornerRadius="8" 
+                Padding="15">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Bulk Import from Excel Sheet" 
+                           FontSize="15" 
+                           FontWeight="Bold" 
+                           Foreground="#1E40AF"/>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <TextBox Grid.Column="0" 
+                             Margin="0,0,10,0"
+                             Text="{Binding ExcelFilePath, Mode=TwoWay}" 
+                             Watermark="Path to Excel File (.xlsx)"
+                             Height="36"
+                             IsEnabled="{Binding !IsUploading}"/>
+                    <Button Grid.Column="1" 
+                            Margin="0,0,10,0"
+                            Content="Browse" 
+                            Height="36" 
+                            Click="BrowseExcelClick"
+                            IsEnabled="{Binding !IsUploading}"
+                            CornerRadius="4" 
+                            Background="#DBEAFE" 
+                            Foreground="#1E40AF"/>
+                    <Button Grid.Column="2" 
+                            Command="{Binding ImportExcelCommand}" 
+                            Content="Import to Firebase" 
+                            Height="36"
+                            IsEnabled="{Binding !IsUploading}"
+                            CornerRadius="4" 
+                            Background="#1E40AF" 
+                            Foreground="White"
+                            FontWeight="SemiBold"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Middle: Manual Form Panel -->
+        <Border Grid.Row="1" 
+                Margin="0,0,0,15"
+                Background="White" 
+                BorderBrush="#E5E7EB" 
+                BorderThickness="1" 
+                CornerRadius="8" 
+                Padding="20">
+            <Grid RowDefinitions="Auto,*">
+                <TextBlock Grid.Row="0" 
+                           Text="Manual Cabinet IP Entry" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           Foreground="#111827" 
+                           Margin="0,0,0,15"/>
+                
+                <ScrollViewer Grid.Row="1">
+                    <StackPanel Spacing="15" Margin="0,0,15,0">
+                        <!-- Cabinet Info -->
+                        <Grid ColumnDefinitions="*,*">
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0" Spacing="5">
+                                <TextBlock Text="Cabinet Code *" FontWeight="SemiBold" FontSize="13" Foreground="#374151"/>
+                                <TextBox Text="{Binding CabinetCode}" Watermark="e.g. 11-2-12-14" Height="36"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Spacing="5">
+                                <TextBlock Text="POP Name" FontWeight="SemiBold" FontSize="13" Foreground="#374151"/>
+                                <TextBox Text="{Binding PopName}" Watermark="e.g. Decent-Life-T300" Height="36"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Separator Margin="0,5"/>
+
+                        <!-- Section: TED MG IPs -->
+                        <TextBlock Text="TED MG Network" FontSize="14" FontWeight="Bold" Foreground="#4B5563"/>
+                        <Grid ColumnDefinitions="*,*,*">
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0" Spacing="5">
+                                <TextBlock Text="TED MG Gateway" FontSize="12" Foreground="#4B5563"/>
+                                <TextBox Text="{Binding TedMgGatewayIp}" Watermark="IP Address" Height="36"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="0,0,10,0" Spacing="5">
+                                <TextBlock Text="TED MG SH1 IP" FontSize="12" Foreground="#4B5563"/>
+                                <TextBox Text="{Binding TedMgSH1Ip}" Watermark="IP Address" Height="36"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Spacing="5">
+                                <TextBlock Text="TED MG SH2 IP" FontSize="12" Foreground="#4B5563"/>
+                                <TextBox Text="{Binding TedMgSH2Ip}" Watermark="IP Address" Height="36"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Section: MG IPs -->
+                        <TextBlock Text="MG Network" FontSize="14" FontWeight="Bold" Foreground="#4B5563"/>
+                        <Grid ColumnDefinitions="*,*,*,*">
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0" Spacing="5">
+                                <TextBlock Text="MG Gateway" FontSize="12" Foreground="#4B5563"/>
+                                <TextBox Text="{Binding MgGatewayIp}" Watermark="IP Address" Height="36"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="0,0,10,0" Spacing="5">
+                                <TextBlock Text="MG SH1 IP" FontSize="12" Foreground="#4B5563"/>
+                                <TextBox Text="{Binding MgSH1Ip}" Watermark="IP Address" Height="36"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Margin="0,0,10,0" Spacing="5">
+                                <TextBlock Text="MG SH2 IP" FontSize="12" Foreground="#4B5563"/>
+                                <TextBox Text="{Binding MgSH2Ip}" Watermark="IP Address" Height="36"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3" Spacing="5">
+                                <TextBlock Text="MG SH3 IP" FontSize="12" Foreground="#4B5563"/>
+                                <TextBox Text="{Binding MgSH3Ip}" Watermark="IP Address" Height="36"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Section: Sig & FVNO IPs -->
+                        <Grid ColumnDefinitions="*,*">
+                            <!-- Left: Sig IPs -->
+                            <StackPanel Grid.Column="0" Margin="0,0,15,0" Spacing="10">
+                                <TextBlock Text="Signaling Network" FontSize="14" FontWeight="Bold" Foreground="#4B5563"/>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Sig Gateway" FontSize="12" Foreground="#4B5563"/>
+                                    <TextBox Text="{Binding SigGatewayIp}" Watermark="IP Address" Height="36"/>
+                                </StackPanel>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Sig SH1 IP" FontSize="12" Foreground="#4B5563"/>
+                                    <TextBox Text="{Binding SigSH1Ip}" Watermark="IP Address" Height="36"/>
+                                </StackPanel>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="Sig SH2 IP" FontSize="12" Foreground="#4B5563"/>
+                                    <TextBox Text="{Binding SigSH2Ip}" Watermark="IP Address" Height="36"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Right: FVNO IPs -->
+                            <StackPanel Grid.Column="1" Spacing="10">
+                                <TextBlock Text="FVNO EM Network" FontSize="14" FontWeight="Bold" Foreground="#4B5563"/>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="FVNO EM Gateway" FontSize="12" Foreground="#4B5563"/>
+                                    <TextBox Text="{Binding FvnoEmGatewayIp}" Watermark="IP Address" Height="36"/>
+                                </StackPanel>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="FVNO EM SH1 IP" FontSize="12" Foreground="#4B5563"/>
+                                    <TextBox Text="{Binding FvnoEmSH1Ip}" Watermark="IP Address" Height="36"/>
+                                </StackPanel>
+                                <StackPanel Spacing="5">
+                                    <TextBlock Text="FVNO EM SH2 IP" FontSize="12" Foreground="#4B5563"/>
+                                    <TextBox Text="{Binding FvnoEmSH2Ip}" Watermark="IP Address" Height="36"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+
+                        <Separator Margin="0,10"/>
+
+                        <!-- Add Button -->
+                        <Button Command="{Binding AddPlanManualCommand}" 
+                                Content="Upload Plan Manually" 
+                                Height="40" 
+                                CornerRadius="4" 
+                                Background="#10B981" 
+                                Foreground="White" 
+                                FontWeight="Bold"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                IsEnabled="{Binding !IsUploading}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+        <!-- Bottom: Status Bar -->
+        <Border Grid.Row="2" Padding="5">
+            <StackPanel Spacing="5">
+                <TextBlock Text="{Binding StatusMessage}" 
+                           FontWeight="SemiBold" 
+                           Foreground="#1F2937" 
+                           HorizontalAlignment="Center"
+                           TextWrapping="Wrap"/>
+                <ProgressBar IsIndeterminate="True" 
+                             Height="4" 
+                             IsVisible="{Binding IsUploading}" 
+                             Foreground="#10B981"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

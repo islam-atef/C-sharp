@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Huawei_Commissioning_App.Classes.ViewModels"
+        xmlns:views="using:Huawei_Commissioning_App.Classes.Views"
+        x:Class="Huawei_Commissioning_App.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="Huawei &amp; Nokia Commissioning Tool"
+        Width="1000" Height="700"
+        WindowStartupLocation="CenterScreen">
+    
+    <Window.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+            <views:LoginView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MainWorkspaceViewModel}">
+            <views:MainWorkspaceView />
+        </DataTemplate>
+    </Window.DataTemplates>
+
+    <ContentControl Content="{Binding CurrentView}" />
+</Window>

@@ -1,4 +1,9 @@
 is_global = true
+build_property.AvaloniaNameGeneratorIsEnabled = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
 build_property.TargetFramework = net8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -11,3 +16,26 @@ build_property.RootNamespace = Huawei_Commissioning_App
 build_property.ProjectDir = C:\Users\pc\OneDrive\Documents\GitHub\C-sharp\Huawei_Commissioning_App\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/pc/OneDrive/Documents/GitHub/C-sharp/Huawei_Commissioning_App/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/pc/OneDrive/Documents/GitHub/C-sharp/Huawei_Commissioning_App/Classes/Views/AddCabinetView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/pc/OneDrive/Documents/GitHub/C-sharp/Huawei_Commissioning_App/Classes/Views/GeneratorView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/pc/OneDrive/Documents/GitHub/C-sharp/Huawei_Commissioning_App/Classes/Views/LoginView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/pc/OneDrive/Documents/GitHub/C-sharp/Huawei_Commissioning_App/Classes/Views/MainWorkspaceView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/pc/OneDrive/Documents/GitHub/C-sharp/Huawei_Commissioning_App/Classes/Views/ManageTemplatesView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/pc/OneDrive/Documents/GitHub/C-sharp/Huawei_Commissioning_App/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

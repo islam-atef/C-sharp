@@ -1,0 +1,5 @@
+C:\Users\pc\OneDrive\Documents\GitHub\C-sharp\Huawei_Commissioning_App\bin\Release\net8.0\win-x64\publish\Huawei_Commissioning_App.pdb
+C:\Users\pc\OneDrive\Documents\GitHub\C-sharp\Huawei_Commissioning_App\bin\Release\net8.0\win-x64\publish\av_libglesv2.dll
+C:\Users\pc\OneDrive\Documents\GitHub\C-sharp\Huawei_Commissioning_App\bin\Release\net8.0\win-x64\publish\libHarfBuzzSharp.dll
+C:\Users\pc\OneDrive\Documents\GitHub\C-sharp\Huawei_Commissioning_App\bin\Release\net8.0\win-x64\publish\libSkiaSharp.dll
+C:\Users\pc\OneDrive\Documents\GitHub\C-sharp\Huawei_Commissioning_App\bin\Release\net8.0\win-x64\publish\Huawei_Commissioning_App.exe

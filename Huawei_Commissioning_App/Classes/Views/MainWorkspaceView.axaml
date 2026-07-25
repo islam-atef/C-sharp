@@ -1,0 +1,80 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Huawei_Commissioning_App.Classes.ViewModels"
+             xmlns:views="using:Huawei_Commissioning_App.Classes.Views"
+             x:Class="Huawei_Commissioning_App.Classes.Views.MainWorkspaceView"
+             x:DataType="vm:MainWorkspaceViewModel">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Top Navigation Bar -->
+        <Border Grid.Row="0" Background="#1E293B" Height="60" Padding="20,0">
+            <Grid ColumnDefinitions="*,Auto">
+                <!-- User Status Info -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Spacing="20">
+                    <TextBlock Text="Huawei &amp; Nokia Commissioning Platform" 
+                               Foreground="White" 
+                               FontWeight="Bold" 
+                               FontSize="16"/>
+                    <Border Width="1" Height="20" Background="#475569" />
+                    <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                        <TextBlock Text="Role:" Foreground="#94A3B8" FontSize="13"/>
+                        <TextBlock Text="{Binding Role}" Foreground="#F8FAFC" FontWeight="SemiBold" FontSize="13"/>
+                    </StackPanel>
+                    <Border Width="1" Height="20" Background="#475569" />
+                    <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                        <TextBlock Text="Region:" Foreground="#94A3B8" FontSize="13"/>
+                        <TextBlock Text="{Binding Region}" Foreground="#F8FAFC" FontWeight="SemiBold" FontSize="13"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Logout Action -->
+                <Button Grid.Column="1" 
+                        Command="{Binding LogoutCommand}" 
+                        Content="Logout" 
+                        Background="#DC2626" 
+                        Foreground="White" 
+                        CornerRadius="4" 
+                        Padding="15,6"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="SemiBold"/>
+            </Grid>
+        </Border>
+
+        <!-- Main workspace content -->
+        <TabControl Grid.Row="1" Margin="10">
+            <!-- Tab 1: Commission Generator -->
+            <TabItem Header="Commission Generator" IsVisible="{Binding IsOutsource}">
+                <ContentControl Content="{Binding GeneratorTab}">
+                    <ContentControl.DataTemplates>
+                        <DataTemplate DataType="{x:Type vm:GeneratorViewModel}">
+                            <views:GeneratorView />
+                        </DataTemplate>
+                    </ContentControl.DataTemplates>
+                </ContentControl>
+            </TabItem>
+
+            <!-- Tab 2: Add IP Plan -->
+            <TabItem Header="Add IP Plan" IsVisible="{Binding IsStaff}">
+                <ContentControl Content="{Binding AddCabinetTab}">
+                    <ContentControl.DataTemplates>
+                        <DataTemplate DataType="{x:Type vm:AddCabinetViewModel}">
+                            <views:AddCabinetView />
+                        </DataTemplate>
+                    </ContentControl.DataTemplates>
+                </ContentControl>
+            </TabItem>
+
+            <!-- Tab 3: Reference Templates Manager -->
+            <TabItem Header="Manage Reference Templates" IsVisible="{Binding IsAdmin}">
+                <ContentControl Content="{Binding ManageTemplatesTab}">
+                    <ContentControl.DataTemplates>
+                        <DataTemplate DataType="{x:Type vm:ManageTemplatesViewModel}">
+                            <views:ManageTemplatesView />
+                        </DataTemplate>
+                    </ContentControl.DataTemplates>
+                </ContentControl>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

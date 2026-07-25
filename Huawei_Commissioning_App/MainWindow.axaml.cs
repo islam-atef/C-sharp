@@ -1,0 +1,12 @@
+using Avalonia.Controls;
+
+namespace Huawei_Commissioning_App
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+    }
+}

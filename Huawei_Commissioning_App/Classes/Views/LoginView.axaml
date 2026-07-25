@@ -1,0 +1,77 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Huawei_Commissioning_App.Classes.ViewModels"
+             x:Class="Huawei_Commissioning_App.Classes.Views.LoginView"
+             x:DataType="vm:LoginViewModel">
+
+    <Grid Background="#F3F4F6">
+        <Border Margin="30" 
+                Width="420" 
+                Padding="40"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Background="White" 
+                CornerRadius="12" 
+                BoxShadow="0 4 15 0 #33000000">
+            
+            <StackPanel Spacing="25">
+                <!-- Header -->
+                <StackPanel Spacing="5" HorizontalAlignment="Center">
+                    <TextBlock Text="Huawei &amp; Nokia Tool" 
+                               FontSize="24" 
+                               FontWeight="Bold" 
+                               Foreground="#1F2937" 
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Commissioning Automation Platform" 
+                               FontSize="12" 
+                               Foreground="#6B7280" 
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Input Field: Key -->
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Access Key" 
+                               FontSize="14" 
+                               FontWeight="SemiBold" 
+                               Foreground="#374151" />
+                    <TextBox Text="{Binding UserKey, Mode=TwoWay}" 
+                             PasswordChar="*" 
+                             Watermark="Enter your authorization key" 
+                             Height="42" 
+                             CornerRadius="6" 
+                             IsEnabled="{Binding !IsBusy}"
+                             BorderThickness="1" 
+                             BorderBrush="#D1D5DB"/>
+                </StackPanel>
+
+                <!-- Error Message -->
+                <TextBlock Text="{Binding ErrorMessage}" 
+                           Foreground="#EF4444" 
+                           FontSize="13" 
+                           TextWrapping="Wrap" 
+                           HorizontalAlignment="Center"
+                           IsVisible="{Binding ErrorMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+
+                <!-- Action Button -->
+                <Button Command="{Binding LoginCommand}" 
+                        Content="Login &amp; Authenticate" 
+                        Height="45" 
+                        CornerRadius="6" 
+                        Background="#2563EB" 
+                        Foreground="White" 
+                        FontWeight="Bold" 
+                        FontSize="15" 
+                        HorizontalAlignment="Stretch" 
+                        HorizontalContentAlignment="Center" 
+                        VerticalContentAlignment="Center"
+                        IsEnabled="{Binding !IsBusy}" />
+
+                <!-- Progress Indicator -->
+                <ProgressBar IsIndeterminate="True" 
+                             Height="4" 
+                             IsVisible="{Binding IsBusy}" 
+                             Foreground="#2563EB" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

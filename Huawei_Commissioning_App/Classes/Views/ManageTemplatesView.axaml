@@ -1,0 +1,133 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Huawei_Commissioning_App.Classes.ViewModels"
+             x:Class="Huawei_Commissioning_App.Classes.Views.ManageTemplatesView"
+             x:DataType="vm:ManageTemplatesViewModel">
+
+    <Grid ColumnDefinitions="320,*" Margin="10">
+        <!-- Left Pane: Template Files List -->
+        <Border Grid.Column="0" 
+                Margin="0,0,20,0"
+                Background="White" 
+                BorderBrush="#E5E7EB" 
+                BorderThickness="1" 
+                CornerRadius="8" 
+                Padding="15">
+            <Grid RowDefinitions="Auto,*,Auto">
+                <TextBlock Grid.Row="0" 
+                           Text="Cloud Templates (.cfg)" 
+                           FontSize="15" 
+                           FontWeight="Bold" 
+                           Foreground="#111827" 
+                           Margin="0,0,0,10"/>
+                
+                <ListBox Grid.Row="1" 
+                         ItemsSource="{Binding TemplatesList}" 
+                         SelectedItem="{Binding SelectedTemplateName, Mode=TwoWay}"
+                         BorderThickness="1"
+                         BorderBrush="#D1D5DB"
+                         CornerRadius="4"/>
+                
+                <Button Grid.Row="2" 
+                        Command="{Binding RefreshTemplatesCommand}" 
+                        Content="Refresh Template List" 
+                        HorizontalAlignment="Stretch" 
+                        HorizontalContentAlignment="Center" 
+                        Height="36" 
+                        Margin="0,10,0,0"
+                        Background="#E5E7EB" 
+                        Foreground="#374151" 
+                        FontWeight="SemiBold"
+                        IsEnabled="{Binding !IsLoading}"/>
+            </Grid>
+        </Border>
+
+        <!-- Right Pane: Actions and Details -->
+        <Grid Grid.Column="1" RowDefinitions="*,Auto">
+            <StackPanel Grid.Row="0" Margin="0,0,0,15" Spacing="25">
+                <!-- Template Information -->
+                <Border Background="White" 
+                        BorderBrush="#E5E7EB" 
+                        BorderThickness="1" 
+                        CornerRadius="8" 
+                        Padding="20">
+                    <StackPanel Spacing="15">
+                        <TextBlock Text="Selected Template Details" 
+                                   FontSize="16" 
+                                   FontWeight="Bold" 
+                                   Foreground="#111827"/>
+                        
+                        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto" Margin="0,5">
+                            <TextBlock Grid.Column="0" Margin="0,0,10,0" Text="Name:" FontWeight="SemiBold" Foreground="#4B5563"/>
+                            <TextBlock Grid.Column="1" 
+                                       Text="{Binding SelectedTemplateName, FallbackValue='No Template Selected'}" 
+                                       Foreground="#111827" 
+                                       FontWeight="Bold"/>
+                        </Grid>
+
+                        <Button Command="{Binding DeleteSelectedTemplateCommand}" 
+                                Content="Delete Selected Template" 
+                                Background="#EF4444" 
+                                Foreground="White" 
+                                FontWeight="SemiBold"
+                                CornerRadius="4" 
+                                Padding="15,8"
+                                HorizontalAlignment="Left"
+                                IsEnabled="{Binding !IsLoading}"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Upload Panel -->
+                <Border Background="White" 
+                        BorderBrush="#E5E7EB" 
+                        BorderThickness="1" 
+                        CornerRadius="8" 
+                        Padding="20">
+                    <StackPanel Spacing="15">
+                        <TextBlock Text="Upload New / Replacement Template" 
+                                   FontSize="16" 
+                                   FontWeight="Bold" 
+                                   Foreground="#1E40AF"/>
+                        <TextBlock Text="Note: Uploading a file with the same name as an existing template will replace it." 
+                                   FontSize="12" 
+                                   Foreground="#6B7280" 
+                                   TextWrapping="Wrap"/>
+                        
+                        <Grid ColumnDefinitions="*,Auto">
+                            <!-- Drag and drop or Browse button -->
+                            <TextBox x:Name="SelectedFilePathBox" 
+                                     Margin="0,0,10,0"
+                                     Watermark="Click browse to select a local .cfg file..." 
+                                     Height="36" 
+                                     IsReadOnly="True"/>
+                            <Button Grid.Column="1" 
+                                    Content="Browse &amp; Upload" 
+                                    Height="36" 
+                                    Click="BrowseAndUploadClick"
+                                    IsEnabled="{Binding !IsLoading}"
+                                    Background="#3B82F6" 
+                                    Foreground="White" 
+                                    FontWeight="SemiBold"
+                                    CornerRadius="4"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Bottom Status Bar -->
+            <Border Grid.Row="1" Padding="5">
+                <StackPanel Spacing="5">
+                    <TextBlock Text="{Binding StatusMessage}" 
+                               FontWeight="SemiBold" 
+                               Foreground="#1F2937" 
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"/>
+                    <ProgressBar IsIndeterminate="True" 
+                                 Height="4" 
+                                 IsVisible="{Binding IsLoading}" 
+                                 Foreground="#3B82F6"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
